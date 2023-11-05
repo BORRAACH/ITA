@@ -25,11 +25,11 @@ const Time = () => {
     <Box className="Time">
       {hoursRemaining !== null && secondsRemaining !== null && (
         <>
-          <Text>Horas</Text>
-          <Text fontSize={"4xl"}> {hoursRemaining}</Text>
+          <Text fontSize={"xl"}>Horas</Text>
+          <Text fontSize={"6xl"}> {hoursRemaining}</Text>
 
-          <Text>Segundos</Text>
-          <Text fontSize={"4xl"}>{secondsRemaining}</Text>
+          <Text fontSize={"xl"}>Segundos</Text>
+          <Text fontSize={"6xl"}>{secondsRemaining}</Text>
         </>
       )}
     </Box>

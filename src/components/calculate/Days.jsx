@@ -27,8 +27,8 @@ const Days = function () {
     <Box className="Days">
       {daysRemaining !== null && (
         <>
-          <Text>Dias</Text>
-          <Text fontSize={"4xl"}>{daysRemaining} </Text>
+          <Text fontSize={"xl"}>Dias</Text>
+          <Text fontSize={"6xl"}>{daysRemaining} </Text>
         </>
       )}
     </Box>
