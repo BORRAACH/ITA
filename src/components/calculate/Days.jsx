@@ -24,9 +24,12 @@ const Days = function () {
   }, []);
 
   return (
-    <Box className="App">
+    <Box className="Days">
       {daysRemaining !== null && (
-        <Text>Faltam {daysRemaining} dias até 01/10/2029.</Text>
+        <>
+          <Text>Dias</Text>
+          <Text fontSize={"4xl"}>{daysRemaining} </Text>
+        </>
       )}
     </Box>
   );
