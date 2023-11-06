@@ -4,6 +4,7 @@ import Time from "./components/calculate/Time";
 import Months from "./components/calculate/Months";
 import Cards from "./components/Cards";
 import { AnimatePresence, motion } from "framer-motion";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Time />
           </Flex>
           <Cards />
+          <SearchBar />
         </Stack>
       </Container>
     </AnimatePresence>
