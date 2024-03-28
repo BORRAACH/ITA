@@ -1,24 +1,23 @@
 "use client";
-import React from "react";
 import {
-  IconButton,
   Box,
   CloseButton,
-  Flex,
-  Icon,
-  useColorModeValue,
-  Text,
   Drawer,
   DrawerContent,
+  Flex,
+  Icon,
+  IconButton,
+  Text,
+  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
-  FiHome,
-  FiTrendingUp,
   FiCompass,
-  FiStar,
-  FiSettings,
+  FiHome,
   FiMenu,
+  FiSettings,
+  FiStar,
+  FiTrendingUp,
 } from "react-icons/fi";
 
 const LinkItems = [
@@ -28,35 +27,6 @@ const LinkItems = [
   { name: "Favourites", icon: FiStar },
   { name: "Settings", icon: FiSettings },
 ];
-
-function SimpleSidebar() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  return (
-    <Box>
-      <SidebarContent
-        onClose={onClose}
-        display={{ base: "none", md: "block" }}
-      />
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {/* Content */}
-      </Box>
-    </Box>
-  );
-}
 
 function SidebarContent({ onClose, ...rest }) {
   return (
@@ -148,4 +118,31 @@ function MobileNav({ onOpen, ...rest }) {
   );
 }
 
-export default SimpleSidebar;
+export default function Sidebar() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <Box>
+      <SidebarContent
+        onClose={onClose}
+        display={{ base: "none", md: "block" }}
+      />
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        returnFocusOnClose={false}
+        onOverlayClick={onClose}
+        size="full"
+      >
+        <DrawerContent>
+          <SidebarContent onClose={onClose} />
+        </DrawerContent>
+      </Drawer>
+      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
+      <Box ml={{ base: 0, md: 60 }} p="4">
+        {/* Content */}
+      </Box>
+    </Box>
+  );
+}
