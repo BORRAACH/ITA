@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-const Time = () => {
+const Time = (p, BorderRadius) => {
   const [hoursRemaining, setHoursRemaining] = useState(null);
   const [secondsRemaining, setSecondsRemaining] = useState(null);
 
@@ -22,14 +22,18 @@ const Time = () => {
   }, []);
 
   return (
-    <Box className="Time">
+    <Box className="Time" p={p} BorderRadius={BorderRadius}>
       {hoursRemaining !== null && secondsRemaining !== null && (
         <>
-          <Text fontSize={"xl"}>Horas</Text>
-          <Text fontSize={"6xl"}> {hoursRemaining}</Text>
+          <Box p={5}>
+            <Text fontSize={"xl"}>Horas</Text>
+            <Text fontSize={"6xl"}> {hoursRemaining}</Text>
+          </Box>
 
-          <Text fontSize={"xl"}>Segundos</Text>
-          <Text fontSize={"6xl"}>{secondsRemaining}</Text>
+          <Box p={5}>
+            <Text fontSize={"xl"}>Segundos</Text>
+            <Text fontSize={"6xl"}>{secondsRemaining}</Text>
+          </Box>
         </>
       )}
     </Box>

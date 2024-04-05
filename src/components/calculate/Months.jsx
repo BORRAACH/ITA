@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-const Months = () => {
+const Months = ({ p, borderRadius }) => {
   const [monthsRemaining, setMonthsRemaining] = useState(null);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Months = () => {
   }, []);
 
   return (
-    <Box className="Months">
+    <Box className="Months" borderRadius={borderRadius} p={5}>
       {monthsRemaining !== null && (
         <>
           <Text fontSize={"xl"}>Meses</Text>

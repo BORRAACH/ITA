@@ -1,7 +1,7 @@
 import { Box, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-const Days = function () {
+export default function Days({ p, BorderRadius }) {
   const [daysRemaining, setDaysRemaining] = useState(null);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Days = function () {
   }, []);
 
   return (
-    <Box className="Days">
+    <Box className="Days" p={p} BorderRadius={BorderRadius}>
       {daysRemaining !== null && (
         <>
           <Text fontSize={"xl"}>Dias</Text>
@@ -33,6 +33,4 @@ const Days = function () {
       )}
     </Box>
   );
-};
-
-export default Days;
+}

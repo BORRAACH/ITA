@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Progress, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 const calculate = () => {
@@ -17,13 +17,15 @@ export default function Percent() {
   const [value, setValue] = useState(null);
 
   useEffect(() => {
-    setValue(calculate);
+    const calculatedValue = calculate();
+    setValue(calculatedValue.toFixed(3));
   }, []);
 
   return (
-    <Box>
+    <Stack gap={3}>
       <Heading>Progresso do ano: </Heading>
+      <Progress value={value} size="md" borderRadius={5} colorScheme="red" />
       {value && <Text fontSize={"4xl"}>{value}%</Text>}
-    </Box>
+    </Stack>
   );
 }

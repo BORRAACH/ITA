@@ -1,4 +1,3 @@
-"use client";
 import {
   Box,
   CloseButton,
@@ -16,16 +15,17 @@ import {
   FiHome,
   FiMenu,
   FiSettings,
-  FiStar,
   FiTrendingUp,
 } from "react-icons/fi";
+import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome },
-  { name: "Progress", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
+  { name: "Home", icon: FiHome, link: "#" },
+  { name: "Progress", icon: FiTrendingUp, link: "#" },
+  { name: "Explore", icon: FiCompass, link: "#" },
+  { name: "Email", icon: MdEmail, link: "/email" },
+  { name: "Settings", icon: FiSettings, link: "#" },
 ];
 
 function SidebarContent({ onClose, ...rest }) {
@@ -45,9 +45,9 @@ function SidebarContent({ onClose, ...rest }) {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
+      {LinkItems.map((item) => (
+        <NavItem key={item.name} icon={item.icon}>
+          <Link to={item.link}>{item.name}</Link>
         </NavItem>
       ))}
     </Box>
@@ -78,7 +78,7 @@ function NavItem({ icon, children, ...rest }) {
         {icon && (
           <Icon
             mr="4"
-            fontSize="16"
+            fontSize="18"
             _groupHover={{
               color: "white",
             }}
