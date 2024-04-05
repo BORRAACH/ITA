@@ -1,62 +1,32 @@
-"use client";
-import React from "react";
 import {
-  IconButton,
   Box,
   CloseButton,
-  Flex,
-  Icon,
-  useColorModeValue,
-  Text,
   Drawer,
   DrawerContent,
+  Flex,
+  Icon,
+  IconButton,
+  Text,
+  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
-  FiHome,
-  FiTrendingUp,
   FiCompass,
-  FiStar,
-  FiSettings,
+  FiHome,
   FiMenu,
+  FiSettings,
+  FiTrendingUp,
 } from "react-icons/fi";
+import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome },
-  { name: "Progress", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
+  { name: "Home", icon: FiHome, link: "#" },
+  { name: "Progress", icon: FiTrendingUp, link: "#" },
+  { name: "Explore", icon: FiCompass, link: "#" },
+  { name: "Email", icon: MdEmail, link: "/email" },
+  { name: "Settings", icon: FiSettings, link: "#" },
 ];
-
-function SimpleSidebar() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  return (
-    <Box>
-      <SidebarContent
-        onClose={onClose}
-        display={{ base: "none", md: "block" }}
-      />
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {/* Content */}
-      </Box>
-    </Box>
-  );
-}
 
 function SidebarContent({ onClose, ...rest }) {
   return (
@@ -75,9 +45,9 @@ function SidebarContent({ onClose, ...rest }) {
         </Text>
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
-          {link.name}
+      {LinkItems.map((item) => (
+        <NavItem key={item.name} icon={item.icon}>
+          <Link to={item.link}>{item.name}</Link>
         </NavItem>
       ))}
     </Box>
@@ -108,7 +78,7 @@ function NavItem({ icon, children, ...rest }) {
         {icon && (
           <Icon
             mr="4"
-            fontSize="16"
+            fontSize="18"
             _groupHover={{
               color: "white",
             }}
@@ -148,4 +118,31 @@ function MobileNav({ onOpen, ...rest }) {
   );
 }
 
-export default SimpleSidebar;
+export default function Sidebar() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  return (
+    <Box>
+      <SidebarContent
+        onClose={onClose}
+        display={{ base: "none", md: "block" }}
+      />
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        returnFocusOnClose={false}
+        onOverlayClick={onClose}
+        size="full"
+      >
+        <DrawerContent>
+          <SidebarContent onClose={onClose} />
+        </DrawerContent>
+      </Drawer>
+      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
+      <Box ml={{ base: 0, md: 60 }} p="4">
+        {/* Content */}
+      </Box>
+    </Box>
+  );
+}

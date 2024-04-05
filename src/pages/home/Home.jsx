@@ -1,17 +1,17 @@
-import { Box, Container, Flex, Grid, Stack, Text } from "@chakra-ui/react";
-import Days from "./components/calculate/Days";
-import Time from "./components/calculate/Time";
-import Months from "./components/calculate/Months";
-import Cards from "./components/Cards";
+import Sidebar from "src/components/Header/Sidebar.jsx";
+import { Box, Container, Flex, Stack } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import SearchBar from "./components/SearchBar";
-import Percent from "./components/actualyYear/percent";
+import Percent from "src/components/calculate/percent";
+import Days from "src/components/calculate/Days";
+import Months from "src/components/calculate/Months";
+import Time from "src/components/calculate/Time";
 
-function App() {
+function TimeData() {
   return (
     <AnimatePresence>
       <Container
         pt={20}
+        maxW={"xl"}
         as={motion.div}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -20,18 +20,24 @@ function App() {
       >
         <Stack spacing={20}>
           <Flex className="Information-time" justifyContent={"space-around"}>
-            <Days />
+            <Days p={5} BorderRadius={"md"} />
             <Months />
             <Time />
           </Flex>
           <Box>
             <Percent />
           </Box>
-          <SearchBar />
         </Stack>
       </Container>
     </AnimatePresence>
   );
 }
 
-export default App;
+export default function Home() {
+  return (
+    <Box>
+      <Sidebar />
+      <TimeData />
+    </Box>
+  );
+}
