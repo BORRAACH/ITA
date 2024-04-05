@@ -23,7 +23,7 @@ export default function Percent() {
 
   return (
     <Stack gap={3}>
-      <Heading>Progresso do ano: </Heading>
+      <Text fontSize={"2xl"}>Progresso: </Text>
       <Progress value={value} size="md" borderRadius={5} colorScheme="red" />
       {value && <Text fontSize={"4xl"}>{value}%</Text>}
     </Stack>

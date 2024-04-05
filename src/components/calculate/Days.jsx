@@ -1,7 +1,7 @@
 import { Box, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-export default function Days({ p, BorderRadius }) {
+export default function Days({ date }) {
   const [daysRemaining, setDaysRemaining] = useState(null);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ export default function Days({ p, BorderRadius }) {
     const currentDate = new Date();
 
     // Define a data de 01/10/2029
-    const targetDate = new Date("2029-10-01");
+    const targetDate = new Date(date);
 
     // Calcula a diferença em milissegundos
     const differenceInMilliseconds = targetDate - currentDate;
@@ -24,7 +24,7 @@ export default function Days({ p, BorderRadius }) {
   }, []);
 
   return (
-    <Box className="Days" p={p} BorderRadius={BorderRadius}>
+    <Box className="Days">
       {daysRemaining !== null && (
         <>
           <Text fontSize={"xl"}>Dias</Text>
