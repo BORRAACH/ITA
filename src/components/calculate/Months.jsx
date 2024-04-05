@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-const Months = ({ p, borderRadius }) => {
+const Months = ({ date }) => {
   const [monthsRemaining, setMonthsRemaining] = useState(null);
 
   useEffect(() => {
     const currentDate = new Date();
-    const targetDate = new Date("2029-10-01");
+    const targetDate = new Date(date);
 
     // Calcula a diferença em meses
     const monthsDifference =
@@ -18,7 +18,7 @@ const Months = ({ p, borderRadius }) => {
   }, []);
 
   return (
-    <Box className="Months" borderRadius={borderRadius} p={5}>
+    <Box className="Months">
       {monthsRemaining !== null && (
         <>
           <Text fontSize={"xl"}>Meses</Text>
